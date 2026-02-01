@@ -33,8 +33,13 @@
         <template>
             <think><set name="topic">*</set></think> Piacere, <set name="nome"><star/></set>.
             Ascolta bene: il mio compito è farti mangiare decentemente.
-            Dimmi cosa hai nel frigo o in dispensa (Es: HO PASTA, HO UOVA, HO POLLO...).
-            Se sei disperato, scrivi: HO IL FRIGO VUOTO.
+            <br/>
+            Dimmi cosa hai nel frigo (singoli o coppie).
+            Es:
+            - "Ho Pasta"
+            - "Ho Riso"
+            - "Ho Pollo e Patate"
+            - "Ho Zucchine"
         </template>
     </category>
 
@@ -43,7 +48,7 @@
         <template><srai>MI CHIAMO <star/></srai></template>
     </category>
 
-   <category>
+    <category>
         <pattern>HO PASTA</pattern>
         <template>
             <think><set name="topic">PASTA</set></think>
@@ -54,31 +59,36 @@
             2. Scrivi BILANCIATO (se vuoi cucinare bene).
         </template>
     </category>
+    <category><pattern>PASTA</pattern><template><srai>HO PASTA</srai></template></category>
 
     <topic name="PASTA">
         
-        <category><pattern>RISO</pattern><template><srai>RISO</srai></template></category>
-        <category><pattern>HO RISO</pattern><template><srai>RISO</srai></template></category>
+        <category><pattern>HO RISO</pattern><template><think><set name="topic"></set></think><srai>HO RISO</srai></template></category>
+        <category><pattern>RISO</pattern><template><think><set name="topic"></set></think><srai>HO RISO</srai></template></category>
+        
+        <category>
+            <pattern>HO *</pattern>
+            <template><think><set name="topic"></set></think><srai>HO <star/></srai></template>
+        </category>
 
         <category>
             <pattern>VELOCE</pattern>
             <template>
-                <think><set name="topic"></set></think> Ok, minimo sforzo massima resa. Ecco le opzioni "Salva-Pranzo":
+                <think><set name="topic"></set></think> 
+                Ok, minimo sforzo massima resa. Opzioni "Salva-Pranzo":
                 <br/><br/>
-                - AGLIO, OLIO E PEPERONCINO: Soffriggi tutto e salta in padella.<br/>
-                - BURRO E PARMIGIANO: La coccola definitiva quando sei giù.<br/>
-                - AL PESTO: Se hai il vasetto (allungalo con un po' d'acqua!).<br/>
-                - CACIO E PEPE: Se hai il pecorino grattugiato, aggiungi l'acqua di cottura per la cremina perfetta.<br/>
-                - CON VERDURE: Qualsiasi verdura tu abbia, saltala in padella.<br/>
-                <br/>
-                PRO TIP: Quando hai pochi ingredienti, il segreto è tenere sempre un po' di acqua di cottura (quella piena di amido) per fare la cremina!
+                - AGLIO, OLIO E PEPERONCINO: Soffriggi tutto e salta.<br/>
+                - BURRO E PARMIGIANO: La coccola definitiva.<br/>
+                - AL PESTO: Allungalo con un po' d'acqua di cottura.<br/>
+                - CACIO E PEPE: Pecorino + Acqua di cottura = Crema.<br/>
+                - CON VERDURE: Qualsiasi verdura, saltala in padella.<br/>
             </template>
         </category>
         
         <category>
             <pattern>BILANCIATO</pattern>
             <template>
-                <think><set name="topic">CHEF</set></think>
+                <think><set name="topic">CHEF</set></think> 
                 Ottimo! Per un piatto unico servono PROTEINE e VERDURE.
                 Dimmi l'ingrediente principale che hai (es: TONNO, UOVA, POLLO).
             </template>
@@ -86,19 +96,20 @@
 
         <category>
             <pattern>*</pattern>
-            <template>Non ho capito. Scrivi esattamente VELOCE o BILANCIATO.</template>
+            <template>Non ho capito. Scrivi VELOCE o BILANCIATO (oppure dimmi un altro ingrediente).</template>
         </category>
-        
     </topic>
 
     <topic name="CHEF">
-        
+        <category><pattern>HO *</pattern><template><think><set name="topic"></set></think><srai>HO <star/></srai></template></category>
+
         <category>
             <pattern>* TONNO *</pattern>
             <template>
-                <think><set name="topic"></set></think> Tonno = Proteine. Ottima base!
-                Se aggiungi delle verdure il piatto diventa perfettamente bilanciato.<br/>
-                Non hai verdure? Non preoccuparti! La pasta col tonno ha salvato la vita a migliaia di studenti. Se hai voglia, puoi mangiare un frutto per compensare le vitamine :)
+                <think><set name="topic"></set></think>
+                Tonno = Proteine. Ottima base!
+                Aggiungi verdure per bilanciarlo, oppure mangialo così e poi fatti un frutto.
+                Tip: Soffriggi un po' di cipolla prima di mettere il tonno.
             </template>
         </category>
         <category><pattern>TONNO</pattern><template><srai>HO TONNO NEL FRIGO</srai></template></category>
@@ -106,12 +117,10 @@
         <category>
             <pattern>* UOVA *</pattern>
             <template>
-                <think><set name="topic"></set></think> Le uova sono perfette! 
-                Per un piatto bilanciato, prova la "Carbonara di Verdure".
-                <br/><br/>
-                Hai Zucchine o Spinaci?
-                Salta le verdure in padella, poi spegni il fuoco e unisci le uova sbattute con un po' di formaggio.
-                Mescola veloce: viene una crema spaziale!
+                <think><set name="topic"></set></think>
+                Le uova sono perfette! Prova la "Carbonara di Verdure".
+                Salta zucchine o spinaci in padella, spegni il fuoco, butta la pasta e le uova sbattute.
+                Mescola veloce per la cremina!
             </template>
         </category>
         <category><pattern>UOVA</pattern><template><srai>HO UOVA NEL FRIGO</srai></template></category>
@@ -119,13 +128,9 @@
         <category>
             <pattern>* POLLO *</pattern>
             <template>
-                <think><set name="topic"></set></think> Grande idea! Facciamo dei "finti Udon"!. 🍜
-                <br/><br/>
-                1. Taglia il pollo e le verdure (Zucchine, Carote o Peperoni) a striscioline sottili.
-                2. Salta tutto in padella a fiamma alta e sfuma con la salsa di Soia.
-                3. Salta la pasta insieme al condimento per un minuto. Se hai della pasta lunga (spaghetti o linguine) ancora meglio!
-                <br/><br/>
-                È veloce, saporita e sembra quella del ristorante cinese!
+                <think><set name="topic"></set></think>
+                Facciamo dei "finti Udon"! 🍜
+                Taglia pollo e verdure a striscioline, salta tutto con salsa di soia e unisci gli spaghetti.
             </template>
         </category>
         <category><pattern>POLLO</pattern><template><srai>HO POLLO NEL FRIGO</srai></template></category>
@@ -133,334 +138,301 @@
         <category>
             <pattern>* CECI *</pattern>
             <template>
-                <think><set name="topic"></set></think> Perfetto! Pasta e Legumi è un piatto unico completo (Cereali + Legumi = Proteine nobili).
-                Non serve aggiungere altro. Metti un po' di rosmarino e olio a crudo.
+                <think><set name="topic"></set></think>
+                Pasta e Legumi è completa! Rosmarino, olio a crudo e sei a posto.
             </template>
         </category>
-        <category><pattern>* FAGIOLI *</pattern><template><srai>HO CECI</srai></template></category>
-        <category><pattern>* LENTICCHIE *</pattern><template><srai>HO CECI</srai></template></category>
         <category><pattern>CECI</pattern><template><srai>HO CECI</srai></template></category>
-        <category><pattern>FAGIOLI</pattern><template><srai>HO CECI</srai></template></category>
-        <category><pattern>LENTICCHIE</pattern><template><srai>HO CECI</srai></template></category>
-
-        <category>
-            <pattern>*</pattern>
-            <template>
-                <think><set name="topic"></set></think> Va bene, non ho una ricetta specifica per questo, ma ricorda la regola d'oro:
-                Pasta + Proteina + Verdura = Piatto Sano.
-                Sperimenta!
-            </template>
-        </category>
-
     </topic>
 
     <category>
-        <pattern>RISO</pattern>
+        <pattern>HO RISO</pattern>
         <template>
-            <think><set name="topic"></set></think> 
-            
-            Il riso è versatile e ti salva il pranzo per due giorni. 🍚
-            Che mood hai oggi?
+            <think><set name="topic"></set></think>
+            Il riso ti salva la vita. 🍚
             <br/><br/>
-            1. Scrivi CALDO (se vuoi un risotto o qualcosa di coccoloso).
-            2. Scrivi FREDDO (se vuoi svuotare il frigo o preparare una schiscetta).
+            🔴 CALDO:
+            - AL POMODORO: Risottalo con passata e acqua calda.
+            - FINTO CANTONESE: Salta riso bollito con uovo e olio.
+            - RISO E PISELLI: Scola tutto insieme + burro.
+            <br/><br/>
+            🔵 FREDDO:
+            - CLASSICA: Würstel, formaggio, tonno.
+            - FINTA POKE: Tonno, Mais, Salsa di Soia.
+            <br/><br/>
+            💡 *Consiglio:* Se lo fai freddo, raffreddalo sotto l'acqua ghiacciata!
+        </template>
+    </category>
+    <category><pattern>RISO</pattern><template><srai>HO RISO</srai></template></category>
+    <category><pattern>RISO BASMATI</pattern><template><srai>HO RISO</srai></template></category>
+
+
+    <category>
+        <pattern>HO RISO E SPINACI</pattern>
+        <template>
+            <think><set name="topic"></set></think>
+            Combinazione perfetta per un "Risotto Verde"! 🟢
+            1. Lessa gli spinaci (o saltali in padella).
+            2. Frullali o tagliali fini.
+            3. Aggiungili al riso a metà cottura.
+            4. Manteca con parmigiano.
+        </template>
+    </category>
+    <category><pattern>HO SPINACI E RISO</pattern><template><srai>HO RISO E SPINACI</srai></template></category>
+
+    <category>
+        <pattern>HO PASTA E TONNO</pattern>
+        <template>
+            <think><set name="topic"></set></think>
+            Classicone. Ma fallo bene:
+            Soffriggi aglio e cipolla, aggiungi il tonno e sfuma con vino o acqua.
+            Salta la pasta dentro al sugo, non metterlo a crudo!
+        </template>
+    </category>
+    <category><pattern>HO TONNO E PASTA</pattern><template><srai>HO PASTA E TONNO</srai></template></category>
+
+    <category>
+        <pattern>HO UOVA E ZUCCHINE</pattern>
+        <template>
+            <think><set name="topic"></set></think>
+            Hai due strade:
+            1. FRITTATA: Zucchine a rondelle cotte + uova sbattute sopra.
+            2. PASTA CARBONARA VEG: Zucchine saltate + crema di uovo e formaggio a fuoco spento.
+        </template>
+    </category>
+    <category><pattern>HO ZUCCHINE E UOVA</pattern><template><srai>HO UOVA E ZUCCHINE</srai></template></category>
+
+    <category>
+        <pattern>HO POLLO E PATATE</pattern>
+        <template>
+            <think><set name="topic"></set></think>
+            Padellata Rustica! 🍗
+            Taglia tutto a cubetti piccoli (così cuociono prima).
+            Rosola con olio e rosmarino.
+            Copri per 15 minuti, poi scoperchia per fare la crosta.
+        </template>
+    </category>
+    <category><pattern>HO PATATE E POLLO</pattern><template><srai>HO POLLO E PATATE</srai></template></category>
+
+    <category>
+        <pattern>HO POMODORO E MOZZARELLA</pattern>
+        <template>
+            <think><set name="topic"></set></think>
+            1. Caprese (Fredda): Olio, sale, origano.
+            2. Pasta alla Sorrentina (Calda): Butta i cubetti di mozzarella sulla pasta al sugo bollente.
+        </template>
+    </category>
+    <category><pattern>HO MOZZARELLA E POMODORO</pattern><template><srai>HO POMODORO E MOZZARELLA</srai></template></category>
+
+    <category>
+        <pattern>HO * E *</pattern>
+        <template>
+            <think><set name="topic"></set></think>
+            Mmh, "<star index="1"/>" e "<star index="2"/>"... interessante! 🤔
+            Regola generale:
+            1. Cuoci la base (pasta, riso o carne).
+            2. Usa l'altro ingrediente come condimento.
+            Se pensi che stiano male insieme... mangiali in due piatti separati!
         </template>
     </category>
 
-    <category><pattern>HO RISO</pattern><template><srai>RISO</srai></template></category>
-    <category><pattern>RISO BASMATI</pattern><template><srai>RISO</srai></template></category>
 
     <category>
-        <pattern>CALDO</pattern>
-        <that>* SCRIVI CALDO * SCRIVI FREDDO *</that>
+        <pattern>HO PATATE</pattern>
         <template>
-            Ottima scelta, comfort food in arrivo.
-            <br/><br/>
-            - AL POMODORO: Cuoci il riso crudo direttamente in pentola con un po' di passata e acqua calda aggiunta poco alla volta.<br/>
-            - ALL'UOVO (FINTO CANTONESE): Salta il riso bollito in padella rovente con un uovo strapazzato e olio.<br/>
-            - RISO E PISELLI: Butta i piselli nell'acqua quando bolle, poi aggiungi il riso; scola tutto insieme e inonda di burro e formaggio.
-        </template>
-    </category>
-
-    <category>
-        <pattern>FREDDO</pattern>
-        <that>* SCRIVI CALDO * SCRIVI FREDDO *</that>
-        <template>
-            Strategico! Così ti rimane anche per domani all'uni.
-            <br/><br/>
-            - CLASSICA: Würstel, cubetti di formaggio, sottaceti, tonno. Svuota tutto quello che hai.<br/>
-            - FINTA POKE: Tonno, Mais, Pomodorini e un giro di Salsa di Soia.<br/>
-            - COL POLLO: Hai avanzi di pollo? Sfilacciali e mettili dentro con un po' di maionese.
-            <br/><br/>
-            IMPORTANTE: Appena scoli il riso, passalo sotto l'acqua ghiacciata per fermare la cottura!
+            Le patate sono oro!
+            1. Fritte (anche in padella).
+            2. Bollite con olio e prezzemolo.
+            3. Al forno con rosmarino.
+            Se sono vecchie? Fai un purè!
         </template>
     </category>
 
     <category>
         <pattern>HO PANE</pattern>
         <template>
-            Fresco o vecchio come il cucco?
-            <random>
-                <li>PANINO GOURMET: Tostalo! Tutto diventa buono se il pane è caldo e croccante.</li>
-                <li>BRUSCHETTA: Aglio strusciato sopra, pomodorini, olio e sale.</li>
-                <li>SCARPETTA: Usalo per pulire il piatto se hai fatto il sugo.</li>
-            </random>
-            <br/>
-            Se il pane è duro come un sasso, dimmi: HO PANE SECCO.
+            Se è fresco: Panino tattico.
+            Se è secco:
+            - Bruschette (strofina aglio e pomodoro).
+            - Tostalo a cubetti per le zuppe.
+            - Grattugialo per fare il pangrattato.
         </template>
     </category>
 
     <category>
-        <pattern>HO PANE SECCO</pattern>
+        <pattern>HO LATTE</pattern>
         <template>
-            Non usarlo come arma contundente! Puoi farci:
-            1. PANGRATTATO: Gratugialo.
-            2. CROSTINI: Taglialo a cubetti, olio, spezie e in forno 10 min. Perfetti nelle zuppe.
-            3. FRENCH TOAST: Bagnalo nel latte e uovo e friggilo in padella.
+            Occhio alla scadenza!
+            - Bevilo col caffè.
+            - Fai una besciamella (latte + burro + farina).
+            - Purè (se hai patate).
+            - Cereali per cena (nessuno ti giudica).
         </template>
     </category>
 
     <category>
-        <pattern>HO PATATE</pattern>
+        <pattern>HO FARINA</pattern>
         <template>
-            Le patate salvano la vita ed costano pochissimo. Ma ci vuole tempo.
-            <random>
-                <li>AL FORNO: Tagliale a spicchi, rosmarino, olio. 40 minuti a 200 gradi.</li>
-                <li>LESSATE: Bolli, schiaccia, olio e sale. Ottime se devi studiare leggero.</li>
-                <li>FRITTE: Se hai voglia di puzzare di fritto per tre giorni, fallo. Ne vale la pena.</li>
-                <li>AL CARTOCCIO: Lavala bene, bucala con forchetta, avvolgi in alluminio, forno 1h. Poi aprila e mettici burro.</li>
-            </random>
-            Ricorda: le patate germogliate vanno pelate molto bene!
-        </template>
-    </category>
-
-    <category>
-        <pattern>HO UOVA</pattern>
-        <template>
-            Le uova salvano la cena in 5 minuti.
-            <random>
-                <li>FRITTATA: Sbatti tutto, aggiungi sale e un po' di formaggio. Cuoci col coperchio.</li>
-                <li>OCCHIO DI BUE: Padella calda, burro, rompi l'uovo senza spaccare il tuorlo. Pane per la scarpetta obbligatorio.</li>
-                <li>STRAPAZZATE: Mentre cuociono, girale sempre con la forchetta. Se aggiungi un goccio di latte vengono cremose.</li>
-                <li>SODE: 9 minuti in acqua bollente. Perfette per l'insalata o come snack all'uni.</li>
-            </random>
-            <br/><br/>
-            Dubbio amletico: sono ancora buone? Chiedi: TEST UOVA.
-        </template>
-    </category>
-
-    <category>
-        <pattern>TEST UOVA</pattern>
-        <template>
-            Fai il test del bicchiere d'acqua (fisica applicata alla cucina):
-            1. Metti l'uovo in un bicchiere d'acqua e sale.
-            2. Se va a fondo: FRESCO (Mangia tranquillo).
-            3. Se galleggia a metà: MANGIALO SUBITO (Ma solo ben cotto, tipo frittata).
-            4. Se galleggia in superficie: BUTTALO (È pieno di gas, quindi marcio. Non rischiare).
-        </template>
-    </category>
-
-    <category>
-        <pattern>HO POLLO</pattern>
-        <template>
-            Il pollo crudo è pericoloso (salmonella!), lavati bene le mani dopo averlo toccato!
-            Ecco come renderlo gustoso:
-            <random>
-                <li>AL LIMONE: Infarinalo leggermente e cuocilo in padella con succo di limone.</li>
-                <li>ALLA PIASTRA: Scalda bene la padella. Non girarlo finché non si stacca da solo.</li>
-                <li>BOCCONCINI AL CURRY: Taglialo a cubetti e fallo saltare con spezie e un goccio di latte.</li>
-                <li>COTOLETTA: Passalo nell'uovo e pangrattato. Friggi. La felicità.</li>
-            </random>
-            <br/>
-            Accompagnalo con verdure, non mangiarlo da solo che è triste.
-        </template>
-    </category>
-
-    <category>
-        <pattern>HO TONNO</pattern>
-        <template>
-            Il santo patrono degli studenti fuori sede.
-            - Nella pasta: Ovvio.
-            - Nell'insalata: Con mais e pomodori.
-            - Polpette: Mischialo con un uovo, pangrattato e parmigiano. Friggi tutto. Una bomba.
-        </template>
-    </category>
-
-    <category>
-        <pattern>HO LEGUMI</pattern>
-        <template>
-            Fagioli, Ceci o Lenticchie? Sono proteine super economiche.
-            <random>
-                <li>PASTA E FAGIOLI: Frulla metà dei fagioli per fare la cremina densa.</li>
-                <li>HUMMUS DEI POVERI: Frulla i ceci con olio, limone e aglio. Spalma sul pane.</li>
-                <li>INSALATA DI LENTICCHIE: Scolale, sciacquale e aggiungi pomodorini e cipolla. Fresca ed estiva.</li>
-                <li>ZUPPA: Scaldali col brodo e rosmarino.</li>
-            </random>
-        </template>
-    </category>
-
-    <category>
-        <pattern>HO FORMAGGIO</pattern>
-        <template>
-            Dipende da cosa hai comprato.
-            - Se è MOZZARELLA: Caprese (con pomodoro) o sulla pizza/pane.
-            - Se è GRANA: Mangialo a scaglie con una pera o miele (antipasto chic).
-            - Se è GORGONZOLA: Scioglilo nella pasta con un goccio di latte.
-            Attento alla muffa verde (se non è gorgonzola, buttalo)!
-        </template>
-    </category>
-
-    <category>
-        <pattern>HO VERDURE</pattern>
-        <template>
-            Finalmente! Bravo <get name="nome"/>, le vitamine servono per studiare.
-            Cosa hai comprato al mercato? (Pomodori, Zucchine, Insalata, Carote...)
-        </template>
-    </category>
-
-    <category>
-        <pattern>HO POMODORI</pattern>
-        <template>
-            Rossi e succosi.
-            <random>
-                <li>CAPRESE: Mozzarella, olio, sale e basilico.</li>
-                <li>BRUSCHETTA: Tagliali a cubetti piccoli piccoli, olio e sale sul pane tostato.</li>
-                <li>SUGO FRESCO: Buttali in padella 5 minuti finché non si spappolano.</li>
-                <li>INSALATA GRECA: Se hai feta, olive e cetrioli sei a Mykonos.</li>
-            </random>
+            Base della vita.
+            - Acqua + Farina = Piadina veloce (senza lievito).
+            - Uova + Farina = Crepes o Frittelle.
+            - Utile per infarinare il pollo prima di cuocerlo.
         </template>
     </category>
 
     <category>
         <pattern>HO ZUCCHINE</pattern>
         <template>
-            Le zucchine stanno bene con tutto, ma sono insipide se non le tratti male.
-            1. TRIFOLATE: Taglia a rondelle, padella, olio, aglio e prezzemolo. Cuoci forte.
-            2. GRIGLIATE: Taglia per il lungo, piastra rovente. Poi condisci con aceto e menta.
-            3. PASTA: Grattugiale crude nella pasta bollente scolata, aggiungi formaggio.
+            Facilissime.
+            Tagliale a rondelle.
+            Saltale in padella con olio e sale finché non sono abbrustolite.
+            Buone da sole o con la pasta.
         </template>
     </category>
 
     <category>
-        <pattern>HO INSALATA</pattern>
+        <pattern>HO POMODORI</pattern>
         <template>
-            L'insalata da sola è triste. Arricchiscila!
-            Aggiungi: Tonno, Mais, Noci, Mele a cubetti, Scaglie di grana.
-            Il segreto è il condimento: emulsiona olio, sale e limone in una tazzina prima di versarlo.
+            - Insalata (con tonno o mozzarella).
+            - Sugo veloce (cuocili in padella finché spappolati).
+            - Bruschetta.
         </template>
     </category>
 
     <category>
         <pattern>HO CAROTE</pattern>
         <template>
-            Croccanti!
-            - SNACK: Pelale e mangiale crude mentre studi. Antistress naturale.
-            - JULIENNE: Grattugiale fini, condisci con limone.
-            - SOFFRITTO: Se hai anche sedano e cipolla, sei pronto per il ragù.
+            - Crude in pinzimonio (mentre studi).
+            - Soffritto (con cipolla).
+            - Bollite (tristezza, ma sane).
         </template>
     </category>
 
     <category>
-        <pattern>HO BRUCIATO TUTTO</pattern>
+        <pattern>HO FORMAGGIO</pattern>
         <template>
-            Oh no! Calma.
-            1. Apri le finestre prima che scatti l'allarme antincendio.
-            2. Se è solo il fondo della pentola, non mescolare! Recupera la parte sopra che è ancora buona.
-            3. Se è irrecuperabile... stasera Kebab? O ordiniamo una pizza?
+            Il formaggio risolve tutto.
+            Grattugialo, fallo a cubetti o scioglilo sopra qualsiasi cosa calda.
         </template>
     </category>
 
     <category>
-        <pattern>E TROPPO SALATO</pattern>
+        <pattern>HO MOZZARELLA</pattern>
         <template>
-            Classico errore da innamorato. Prova questi trucchi da chimico:
-            - Se è una salsa o zuppa: aggiungi una patata cruda pelata, assorbirà il sale (poi buttala).
-            - Aggiungi un po' di zucchero o panna per bilanciare il gusto.
-            - Allungalo con acqua se possibile.
+            Caprese, Pizza, o pasta al forno.
+            Mangiala subito che diventa acida in fretta dopo aperta!
         </template>
     </category>
 
     <category>
-        <pattern>HO IL FRIGO VUOTO</pattern>
+        <pattern>HO WURSTEL</pattern>
         <template>
-            Situazione critica, soldato. Controlliamo la DISPENSA (quella delle scatolette).
-            Hai tonno, fagioli o pelati?
+            Il cibo della disperazione.
+            Tagliali a metà e piastrali in padella.
+            Mettili nell'insalata di riso.
+            (Cuocili sempre, non mangiarli crudi!).
         </template>
     </category>
 
     <category>
-        <pattern>SI</pattern>
-        <that>HAI TONNO FAGIOLI O PELATI</that>
+        <pattern>HO SPINACI</pattern>
         <template>
-            Allora sei salvo.
-            - Tonno + Fagioli = Insalata messicana (aggiungi cipolla se vuoi piangere).
-            - Pelati + Origano = Sugo finto per fare la scarpetta col pane.
+            Freschi o surgelati?
+            Comunque padella + aglio + olio.
+            Se ci metti una sottiletta sopra a fine cottura diventano buonissimi.
         </template>
     </category>
 
     <category>
-        <pattern>NO</pattern>
-        <that>HAI TONNO FAGIOLI O PELATI</that>
+        <pattern>HO MAIONESE</pattern>
         <template>
-            Amico mio, stasera si digiuna o si va a pietire un piatto di pasta dal vicino.
-            Domani vai a fare la spesa, è un ordine!
+            Condimento magico.
+            Insalata di riso, panini, o per intingere il pollo.
+            Non esagerare!
+        </template>
+    </category>
+
+
+    <category>
+        <pattern>HO CAFFE</pattern>
+        <template>
+            Il carburante dello studente.
+            Ricorda: la moka si lava solo con acqua.
+            Non berlo dopo le 18 se vuoi dormire!
         </template>
     </category>
 
     <category>
-        <pattern>NON HO VOGLIA DI CUCINARE</pattern>
+        <pattern>HO VINO</pattern>
         <template>
-            Ti capisco, la sessione d'esami è dura.
-            Ma ascolta il tuo stomaco.
-            Fatti almeno una pasta in bianco. Ci metti 10 minuti precisi. 
-            Mentre l'acqua bolle ti leggi due pagine di appunti. Forza!
+            Ottimo per cucinare (sfuma il risotto) o per il post-esame.
+            Bevi responsabilmente.
         </template>
     </category>
 
-    <category><pattern>HO SPAGHETTI</pattern><template><srai>HO PASTA</srai></template></category>
-    <category><pattern>HO PENNE</pattern><template><srai>HO PASTA</srai></template></category>
-    <category><pattern>HO FUSILLI</pattern><template><srai>HO PASTA</srai></template></category>
-    <category><pattern>HO RIGATONI</pattern><template><srai>HO PASTA</srai></template></category>
-    <category><pattern>HO TORTELLINI</pattern><template><srai>HO PASTA</srai></template></category>
-    <category><pattern>HO RAVIOLI</pattern><template><srai>HO PASTA</srai></template></category>
-    <category><pattern>HO GNOCCHI</pattern><template><srai>HO PASTA</srai></template></category>
-    <category><pattern>HO LASAGNE</pattern><template><srai>HO PASTA</srai></template></category>
-    <category><pattern>HO ORECCHIETTE</pattern><template><srai>HO PASTA</srai></template></category>
-    <category><pattern>HO TAGLIATELLE</pattern><template><srai>HO PASTA</srai></template></category>
-    <category><pattern>HO LA PASTA</pattern><template><srai>HO PASTA</srai></template></category>
-    <category><pattern>RICETTA PASTA</pattern><template><srai>HO PASTA</srai></template></category>
-
-    <category><pattern>HO RISO BASMATI</pattern><template><srai>HO RISO</srai></template></category>
-    <category><pattern>HO RISO INTEGRALE</pattern><template><srai>HO RISO</srai></template></category>
-    <category><pattern>HO COUSCOUS</pattern><template><srai>HO RISO</srai></template></category>
-    <category><pattern>HO FARRO</pattern><template><srai>HO RISO</srai></template></category>
-    <category><pattern>HO ORZO</pattern><template><srai>HO RISO</srai></template></category>
-    <category><pattern>HO QUINOA</pattern><template><srai>HO RISO</srai></template></category>
-
-    <category><pattern>HO FOCACCIA</pattern><template><srai>HO PANE</srai></template></category>
-    <category><pattern>HO PIADINA</pattern><template><srai>HO PANE</srai></template></category>
-    <category><pattern>HO CRACKERS</pattern><template><srai>HO PANE</srai></template></category>
-    <category><pattern>HO FETTE BISCOTTATE</pattern><template><srai>HO PANE</srai></template></category>
-    <category><pattern>HO PAN CARRE</pattern><template><srai>HO PANE</srai></template></category>
-    <category><pattern>HO PANE PER TOAST</pattern><template><srai>HO PANE</srai></template></category>
-    <category><pattern>HO ROSETTA</pattern><template><srai>HO PANE</srai></template></category>
-
-    <category><pattern>HO CECI</pattern><template><srai>HO LEGUMI</srai></template></category>
-    <category><pattern>HO FAGIOLI</pattern><template><srai>HO LEGUMI</srai></template></category>
-    <category><pattern>HO LENTICCHIE</pattern><template><srai>HO LEGUMI</srai></template></category>
-    <category><pattern>HO MOZZARELLA</pattern><template><srai>HO FORMAGGIO</srai></template></category>
-    <category><pattern>HO GRANA</pattern><template><srai>HO FORMAGGIO</srai></template></category>
-    <category><pattern>HO PARMIGIANO</pattern><template><srai>HO FORMAGGIO</srai></template></category>
-
-    <category><pattern>HO PATATINE</pattern><template><srai>HO PATATE</srai></template></category>
-    <category><pattern>HO PURE</pattern><template><srai>HO PATATE</srai></template></category>
+    <category>
+        <pattern>HO BIRRA</pattern>
+        <template>
+            Pizza e Birra?
+            Oppure usala per sfumare il pollo (Pollo alla birra: facilissimo).
+        </template>
+    </category>
 
     <category>
-        <pattern>*</pattern>
+        <pattern>HO FAME</pattern>
         <template>
-            Mmm, non conosco questo ingrediente (o forse non ti ho capito).
-            Prova a dirmi qualcosa di base come: HO PASTA, HO UOVA, HO POLLO.
-            Oppure dimmi: HO IL FRIGO VUOTO.
+            Dimmi cosa hai in frigo e risolviamo il problema!
+        </template>
+    </category>
+
+    <category>
+        <pattern>SONO TRISTE</pattern>
+        <template>
+            Mi dispiace. :(
+            Cibo consigliato: Cioccolato, Gelato o Pasta burro e parmigiano.
+        </template>
+    </category>
+
+    <category>
+        <pattern>SONO STANCO</pattern>
+        <template>
+            Fatti una pasta aglio e olio (5 minuti) e vai a letto.
+            Non ordinare delivery, risparmia!
+        </template>
+    </category>
+
+    <category>
+        <pattern>HO UN ESAME</pattern>
+        <template>
+            In bocca al lupo! 🐺
+            Stai leggero: Riso e pollo o pesce. Niente fritti!
+        </template>
+    </category>
+
+    <category>
+        <pattern>SONO AL VERDE</pattern>
+        <template>
+            Menu Low Cost:
+            - Pasta al pomodoro.
+            - Uova.
+            - Fagioli in scatola.
+            Con 5 euro mangi 3 giorni.
+        </template>
+    </category>
+
+    <category>
+        <pattern>DAMMI UN CONSIGLIO</pattern>
+        <template>
+            <random>
+                <li>Lava i piatti subito dopo mangiato.</li>
+                <li>Il sale va nell'acqua quando bolle.</li>
+                <li>La cipolla avanzata va chiusa bene o puzza tutto.</li>
+                <li>Sgocciola bene il tonno.</li>
+                <li>Non mettere la moka in lavastoviglie.</li>
+                <li>Controlla la scadenza delle uova.</li>
+                <li>Se l'olio fuma, stai bruciando tutto.</li>
+                <li>Usa l'acqua della pasta per legare il sugo.</li>
+            </random>
         </template>
     </category>
 
