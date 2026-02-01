@@ -12,13 +12,7 @@
         Prima di iniziare, come ti chiami?
     </template>
 </category>
-<category>
-    <pattern>*</pattern>
-    <that>PRIMA DI INIZIARE COME TI CHIAMI</that>
-    <template>
-        <srai>MI CHIAMO <star/></srai>
-    </template>
-</category>
+
 <category><pattern>SALVE</pattern><template><srai>CIAO</srai></template></category>
 <category><pattern>BUONGIORNO</pattern><template><srai>CIAO</srai></template></category>
 <category><pattern>SOS</pattern><template><srai>CIAO</srai></template></category>
@@ -37,7 +31,13 @@
     <pattern>IO SONO *</pattern>
     <template><srai>MI CHIAMO <star/></srai></template>
 </category>
-
+<category>
+    <pattern>*</pattern>
+    <that>PRIMA DI INIZIARE COME TI CHIAMI</that>
+    <template>
+        <srai>MI CHIAMO <star/></srai>
+    </template>
+</category>
 <category>
     <pattern>HO PASTA</pattern>
     <template>
