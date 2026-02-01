@@ -93,8 +93,9 @@
             <pattern>* TONNO *</pattern>
             <template>
                 <think><set name="topic">*</set></think>
-                Tonno = Proteine. Ma da solo stufa.
-                Aggiungi Zucchine o Pomodori saltati in padella per dare gusto e fibre!
+                Tonno = Proteine. Ottima base!
+                Se aggiungi delle verdure il piatto diventa perfettamente bilanciato.<br/>
+                Non hai verdure? Non preoccuparti! La pasta col tonno ha salvato la vita a migliaia di studenti. Se hai voglia, puoi mangiare un frutto per compensare le vitamine :)
             </template>
         </category>
         <category><pattern>TONNO</pattern><template><srai>HO TONNO NEL FRIGO</srai></template></category>
@@ -103,9 +104,12 @@
             <pattern>* UOVA *</pattern>
             <template>
                 <think><set name="topic">*</set></think>
-                Le uova sono ottime, ma attento ai grassi.
-                Invece della solita carbonara pesante, prova uova e Zucchine (o Spinaci).
-                Salta le verdure, spegni il fuoco e unisci le uova sbattute: viene cremoso e sano.
+              Le uova sono perfette! 
+                Per un piatto bilanciato, prova la "Carbonara di Verdure".
+                <br/><br/>
+                Hai Zucchine o Spinaci?
+                Salta le verdure in padella, poi spegni il fuoco e unisci le uova sbattute con un po' di formaggio.
+                Mescola veloce: viene una crema spaziale!
             </template>
         </category>
         <category><pattern>UOVA</pattern><template><srai>HO UOVA NEL FRIGO</srai></template></category>
@@ -114,9 +118,13 @@
             <pattern>* POLLO *</pattern>
             <template>
                 <think><set name="topic">*</set></think>
-                Pollo e pasta fa molto "palestra", ma va benissimo.
-                Per non farlo stopposo, taglialo a dadini piccoli e fallo rosolare con PEPERONI o FUNGHI.
-                Poi butta la pasta nella stessa padella.
+              Grande idea! Facciamo dei "finti Udon"!. 🍜
+                <br/><br/>
+                1. Taglia il pollo e le verdure (Zucchine, Carote o Peperoni) a striscioline sottili.
+                2. Salta tutto in padella a fiamma alta e sfuma con la salsa di Soia.
+                3. Salta la pasta insieme al condimento per un minuto. Se hai della pasta lunga (spaghetti o linguine) ancora meglio!
+                <br/><br/>
+                È veloce, saporita e sembra quella del ristorante cinese!
             </template>
         </category>
         <category><pattern>POLLO</pattern><template><srai>HO POLLO NEL FRIGO</srai></template></category>
@@ -126,7 +134,7 @@
             <template>
                 <think><set name="topic">*</set></think>
                 Perfetto! Pasta e Legumi è un piatto unico completo (Cereali + Legumi = Proteine nobili).
-                Non serve aggiungere carne. Metti un po' di rosmarino e olio a crudo.
+                Non serve aggiungere altro. Metti un po' di rosmarino e olio a crudo.
             </template>
         </category>
         <category><pattern>* FAGIOLI *</pattern><template><srai>HO CECI</srai></template></category>
@@ -147,29 +155,52 @@
 
     </topic>
 
-<category>
-    <pattern>HO RISO</pattern>
-    <template>
-        Il riso è versatile e dura tanto. Che voglia hai?
-        <random>
-            <li>RISOTTO GIALLO: Hai una bustina di zafferano? Fai un soffritto e via.</li>
-            <li>RISO IN BIANCO: Con tanto parmigiano e olio buono. Comfort food assoluto.</li>
-            <li>INSALATA DI RISO: Svuota il frigo. Würstel, formaggio, tonno, sottaceti. Vale tutto.</li>
-            <li>RISO E PISELLI: Se hai i piselli in scatola, uniscili. Piatto unico perfetto.</li>
-        </random>
-        <br/><br/>
-        Vuoi sapere come conservarlo per la schiscetta? Chiedi: COME CONSERVO IL RISO.
-    </template>
-</category>
+  <category>
+        <pattern>HO RISO</pattern>
+        <template>
+            <think><set name="topic">SCELTA_RISO</set></think>
+            Il riso è versatile e ti salva il pranzo per due giorni. 🍚
+            Che mood hai oggi?
+            <br/>
+            1. Scrivi CALDO (se vuoi un risotto o qualcosa di coccoloso).
+            2. Scrivi FREDDO (se vuoi svuotare il frigo o preparare una schiscetta).
+        </template>
+    </category>
 
-<category>
-    <pattern>COME CONSERVO IL RISO</pattern>
-    <template>
-        Scolalo al dente e passalo sotto l'acqua fredda per fermare la cottura (shock termico).
-        Mettilo in un tupperware. In frigo dura 3 giorni. 
-        PRO TIP: Se lo salti in padella domani con salsa di soia e uovo diventa Riso alla Cinese!
-    </template>
-</category>
+    <topic name="SCELTA_RISO">
+        
+        <category>
+            <pattern>CALDO</pattern>
+            <template>
+                <think><set name="topic">*</set></think>
+                Ottima scelta, comfort food in arrivo.
+                <br/><br/>
+                - AL POMODORO: cuoci il riso crudo direttamente in pentola con un po' di passata e acqua calda aggiunta poco alla volta.<br/>
+                - ALL'UOVO (FINTO CANTONESE): Salta il riso bollito in padella rovente con un uovo strapazzato e olio.<br/>
+                - RISO E PISELLI: Butta i piselli nell'acqua quando bolle, poi aggiungi il riso; scola tutto insieme e inonda di burro e formaggio.
+            </template>
+        </category>
+
+        <category>
+            <pattern>FREDDO</pattern>
+            <template>
+                <think><set name="topic">*</set></think>
+                Strategico! Così ti rimane anche per domani all'uni.
+                <br/><br/>
+                - CLASSICA: Würstel, cubetti di formaggio, sottaceti, tonno. Svuota tutto quello che hai.
+                - FINTA POKE: Tonno, Mais, Pomodorini e un giro di Salsa di Soia.
+                - COL POLLO: Hai avanzi di pollo? Sfilacciali e mettili dentro con un po' di maionese.
+                <br/><br/>
+                IMPORTANTE: Appena scoli il riso, passalo sotto l'acqua ghiacciata per fermare la cottura!
+            </template>
+        </category>
+        
+        <category>
+            <pattern>*</pattern>
+            <template>Non ho capito. Scrivi esattamente CALDO o FREDDO.</template>
+        </category>
+
+    </topic>
 
 <category>
     <pattern>HO PANE</pattern>
