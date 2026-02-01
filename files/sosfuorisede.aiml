@@ -43,7 +43,7 @@
         <template><srai>MI CHIAMO <star/></srai></template>
     </category>
 
-    <category>
+   <category>
         <pattern>HO PASTA</pattern>
         <template>
             <think><set name="topic">PASTA</set></think>
@@ -57,10 +57,13 @@
 
     <topic name="PASTA">
         
+        <category><pattern>RISO</pattern><template><srai>RISO</srai></template></category>
+        <category><pattern>HO RISO</pattern><template><srai>RISO</srai></template></category>
+
         <category>
             <pattern>VELOCE</pattern>
             <template>
-                <think><set name="topic">*</set></think> Ok, minimo sforzo massima resa. Ecco le opzioni "Salva-Pranzo":
+                <think><set name="topic"></set></think> Ok, minimo sforzo massima resa. Ecco le opzioni "Salva-Pranzo":
                 <br/><br/>
                 - AGLIO, OLIO E PEPERONCINO: Soffriggi tutto e salta in padella.<br/>
                 - BURRO E PARMIGIANO: La coccola definitiva quando sei giù.<br/>
@@ -75,7 +78,8 @@
         <category>
             <pattern>BILANCIATO</pattern>
             <template>
-                <think><set name="topic">CHEF</set></think> Ottimo! Per un piatto unico servono PROTEINE e VERDURE.
+                <think><set name="topic">CHEF</set></think>
+                Ottimo! Per un piatto unico servono PROTEINE e VERDURE.
                 Dimmi l'ingrediente principale che hai (es: TONNO, UOVA, POLLO).
             </template>
         </category>
@@ -92,8 +96,7 @@
         <category>
             <pattern>* TONNO *</pattern>
             <template>
-                <think><set name="topic">*</set></think>
-                Tonno = Proteine. Ottima base!
+                <think><set name="topic"></set></think> Tonno = Proteine. Ottima base!
                 Se aggiungi delle verdure il piatto diventa perfettamente bilanciato.<br/>
                 Non hai verdure? Non preoccuparti! La pasta col tonno ha salvato la vita a migliaia di studenti. Se hai voglia, puoi mangiare un frutto per compensare le vitamine :)
             </template>
@@ -103,8 +106,7 @@
         <category>
             <pattern>* UOVA *</pattern>
             <template>
-                <think><set name="topic">*</set></think>
-                Le uova sono perfette! 
+                <think><set name="topic"></set></think> Le uova sono perfette! 
                 Per un piatto bilanciato, prova la "Carbonara di Verdure".
                 <br/><br/>
                 Hai Zucchine o Spinaci?
@@ -117,8 +119,7 @@
         <category>
             <pattern>* POLLO *</pattern>
             <template>
-                <think><set name="topic">*</set></think>
-                Grande idea! Facciamo dei "finti Udon"!. 🍜
+                <think><set name="topic"></set></think> Grande idea! Facciamo dei "finti Udon"!. 🍜
                 <br/><br/>
                 1. Taglia il pollo e le verdure (Zucchine, Carote o Peperoni) a striscioline sottili.
                 2. Salta tutto in padella a fiamma alta e sfuma con la salsa di Soia.
@@ -132,8 +133,7 @@
         <category>
             <pattern>* CECI *</pattern>
             <template>
-                <think><set name="topic">*</set></think>
-                Perfetto! Pasta e Legumi è un piatto unico completo (Cereali + Legumi = Proteine nobili).
+                <think><set name="topic"></set></think> Perfetto! Pasta e Legumi è un piatto unico completo (Cereali + Legumi = Proteine nobili).
                 Non serve aggiungere altro. Metti un po' di rosmarino e olio a crudo.
             </template>
         </category>
@@ -146,8 +146,7 @@
         <category>
             <pattern>*</pattern>
             <template>
-                <think><set name="topic">*</set></think>
-                Va bene, non ho una ricetta specifica per questo, ma ricorda la regola d'oro:
+                <think><set name="topic"></set></think> Va bene, non ho una ricetta specifica per questo, ma ricorda la regola d'oro:
                 Pasta + Proteina + Verdura = Piatto Sano.
                 Sperimenta!
             </template>
@@ -158,7 +157,7 @@
     <category>
         <pattern>RISO</pattern>
         <template>
-            <think><set name="topic">GENERICO</set></think> 
+            <think><set name="topic"></set></think> 
             
             Il riso è versatile e ti salva il pranzo per due giorni. 🍚
             Che mood hai oggi?
