@@ -87,26 +87,64 @@
         
     </topic>
 
-    <topic name="CHEF">
+<topic name="CHEF">
+        
         <category>
             <pattern>* TONNO *</pattern>
             <template>
                 <think><set name="topic">*</set></think>
-                Tonno = Proteine. Aggiungi Zucchine o Pomodori per le fibre!
+                Tonno = Proteine. Ma da solo stufa.
+                Aggiungi Zucchine o Pomodori saltati in padella per dare gusto e fibre!
             </template>
         </category>
-        
+        <category><pattern>TONNO</pattern><template><srai>HO TONNO NEL FRIGO</srai></template></category>
+
         <category>
-            <pattern>TONNO</pattern> <template><srai>HO TONNO E BASTA</srai></template>
+            <pattern>* UOVA *</pattern>
+            <template>
+                <think><set name="topic">*</set></think>
+                Le uova sono ottime, ma attento ai grassi.
+                Invece della solita carbonara pesante, prova uova e Zucchine (o Spinaci).
+                Salta le verdure, spegni il fuoco e unisci le uova sbattute: viene cremoso e sano.
+            </template>
         </category>
+        <category><pattern>UOVA</pattern><template><srai>HO UOVA NEL FRIGO</srai></template></category>
+
+        <category>
+            <pattern>* POLLO *</pattern>
+            <template>
+                <think><set name="topic">*</set></think>
+                Pollo e pasta fa molto "palestra", ma va benissimo.
+                Per non farlo stopposo, taglialo a dadini piccoli e fallo rosolare con PEPERONI o FUNGHI.
+                Poi butta la pasta nella stessa padella.
+            </template>
+        </category>
+        <category><pattern>POLLO</pattern><template><srai>HO POLLO NEL FRIGO</srai></template></category>
+
+        <category>
+            <pattern>* CECI *</pattern>
+            <template>
+                <think><set name="topic">*</set></think>
+                Perfetto! Pasta e Legumi è un piatto unico completo (Cereali + Legumi = Proteine nobili).
+                Non serve aggiungere carne. Metti un po' di rosmarino e olio a crudo.
+            </template>
+        </category>
+        <category><pattern>* FAGIOLI *</pattern><template><srai>HO CECI</srai></template></category>
+        <category><pattern>* LENTICCHIE *</pattern><template><srai>HO CECI</srai></template></category>
+        <category><pattern>CECI</pattern><template><srai>HO CECI</srai></template></category>
+        <category><pattern>FAGIOLI</pattern><template><srai>HO CECI</srai></template></category>
+        <category><pattern>LENTICCHIE</pattern><template><srai>HO CECI</srai></template></category>
 
         <category>
             <pattern>*</pattern>
             <template>
                 <think><set name="topic">*</set></think>
-                Va bene, ricorda la regola: Pasta + Proteina + Verdura.
+                Va bene, non ho una ricetta specifica per questo, ma ricorda la regola d'oro:
+                Pasta + Proteina + Verdura = Piatto Sano.
+                Sperimenta!
             </template>
         </category>
+
     </topic>
 
 <category>
