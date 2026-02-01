@@ -158,7 +158,8 @@
     <category>
         <pattern>RISO</pattern>
         <template>
-            <think><set name="topic">TOPIC_RISO</set></think>
+            <think><set name="topic">GENERICO</set></think> 
+            
             Il riso è versatile e ti salva il pranzo per due giorni. 🍚
             Che mood hai oggi?
             <br/><br/>
@@ -170,38 +171,31 @@
     <category><pattern>HO RISO</pattern><template><srai>RISO</srai></template></category>
     <category><pattern>RISO BASMATI</pattern><template><srai>RISO</srai></template></category>
 
-    <topic name="TOPIC_RISO">
-        
-        <category>
-            <pattern>CALDO</pattern>
-            <template>
-                <think><set name="topic">*</set></think> Ottima scelta, comfort food in arrivo.
-                <br/><br/>
-                - AL POMODORO: cuoci il riso crudo direttamente in pentola con un po' di passata e acqua calda aggiunta poco alla volta.<br/>
-                - ALL'UOVO (FINTO CANTONESE): Salta il riso bollito in padella rovente con un uovo strapazzato e olio.<br/>
-                - RISO E PISELLI: Butta i piselli nell'acqua quando bolle, poi aggiungi il riso; scola tutto insieme e inonda di burro e formaggio.
-            </template>
-        </category>
+    <category>
+        <pattern>CALDO</pattern>
+        <that>* SCRIVI CALDO * SCRIVI FREDDO *</that>
+        <template>
+            Ottima scelta, comfort food in arrivo.
+            <br/><br/>
+            - AL POMODORO: Cuoci il riso crudo direttamente in pentola con un po' di passata e acqua calda aggiunta poco alla volta.<br/>
+            - ALL'UOVO (FINTO CANTONESE): Salta il riso bollito in padella rovente con un uovo strapazzato e olio.<br/>
+            - RISO E PISELLI: Butta i piselli nell'acqua quando bolle, poi aggiungi il riso; scola tutto insieme e inonda di burro e formaggio.
+        </template>
+    </category>
 
-        <category>
-            <pattern>FREDDO</pattern>
-            <template>
-                <think><set name="topic">*</set></think> Strategico! Così ti rimane anche per domani all'uni.
-                <br/><br/>
-                - CLASSICA: Würstel, cubetti di formaggio, sottaceti, tonno. Svuota tutto quello che hai.<br/>
-                - FINTA POKE: Tonno, Mais, Pomodorini e un giro di Salsa di Soia.<br/>
-                - COL POLLO: Hai avanzi di pollo? Sfilacciali e mettili dentro con un po' di maionese.
-                <br/><br/>
-                IMPORTANTE: Appena scoli il riso, passalo sotto l'acqua ghiacciata per fermare la cottura!
-            </template>
-        </category>
-        
-        <category>
-            <pattern>*</pattern>
-            <template>Non ho capito. Scrivi esattamente CALDO o FREDDO per ricevere la ricetta.</template>
-        </category>
-
-    </topic>
+    <category>
+        <pattern>FREDDO</pattern>
+        <that>* SCRIVI CALDO * SCRIVI FREDDO *</that>
+        <template>
+            Strategico! Così ti rimane anche per domani all'uni.
+            <br/><br/>
+            - CLASSICA: Würstel, cubetti di formaggio, sottaceti, tonno. Svuota tutto quello che hai.<br/>
+            - FINTA POKE: Tonno, Mais, Pomodorini e un giro di Salsa di Soia.<br/>
+            - COL POLLO: Hai avanzi di pollo? Sfilacciali e mettili dentro con un po' di maionese.
+            <br/><br/>
+            IMPORTANTE: Appena scoli il riso, passalo sotto l'acqua ghiacciata per fermare la cottura!
+        </template>
+    </category>
 
     <category>
         <pattern>HO PANE</pattern>
