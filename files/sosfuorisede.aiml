@@ -2,67 +2,119 @@
 <aiml version="2.0">
 
 <category>
-    <pattern>CIAO</pattern>
-    <template>
-        <random>
-            <li>Ciao! Sono SOS FUORISEDE, il tuo salvavita in cucina.</li>
-            <li>Ehilà! Benvenuto nel servizio anti-digiuno per studenti.</li>
-            <li>Ciao! Pronto a cucinare qualcosa di commestibile?</li>
-        </random>
-        Prima di iniziare, come ti chiami?
-    </template>
-</category>
+        <pattern>CIAO</pattern>
+        <template>
+            <think><set name="topic">ASPETTONOME</set></think>
+            <random>
+                <li>Ciao! Sono SOS FUORISEDE, il tuo salvavita in cucina.</li>
+                <li>Ehilà! Benvenuto nel servizio anti-digiuno per studenti.</li>
+                <li>Ciao! Pronto a cucinare qualcosa di commestibile?</li>
+            </random>
+            Prima di iniziare, come ti chiami?
+        </template>
+    </category>
 
-<category><pattern>SALVE</pattern><template><srai>CIAO</srai></template></category>
-<category><pattern>BUONGIORNO</pattern><template><srai>CIAO</srai></template></category>
-<category><pattern>SOS</pattern><template><srai>CIAO</srai></template></category>
+    <category><pattern>SALVE</pattern><template><srai>CIAO</srai></template></category>
+    <category><pattern>BUONGIORNO</pattern><template><srai>CIAO</srai></template></category>
+    <category><pattern>SOS</pattern><template><srai>CIAO</srai></template></category>
 
-<category>
-    <pattern>MI CHIAMO *</pattern>
-    <template>
-        Piacere, <set name="nome"><star/></set>.
-        Ascolta bene: il mio compito è farti mangiare decentemente.
-        Dimmi cosa hai nel frigo o in dispensa (Es: HO PASTA, HO UOVA, HO POLLO...).
-        Se sei disperato, scrivi: HO IL FRIGO VUOTO.
-    </template>
-</category>
+    <topic name="ASPETTONOME">
+        <category>
+            <pattern>*</pattern>
+            <template>
+                <think><set name="topic">*</set></think>
+                <srai>MI CHIAMO <star/></srai>
+            </template>
+        </category>
+    </topic>
 
-<category>
-    <pattern>IO SONO *</pattern>
-    <template><srai>MI CHIAMO <star/></srai></template>
-</category>
-<category>
-    <pattern>*</pattern>
-    <that>PRIMA DI INIZIARE COME TI CHIAMI</that>
-    <template>
-        <srai>MI CHIAMO <star/></srai>
-    </template>
-</category>
-<category>
-    <pattern>HO PASTA</pattern>
-    <template>
-        La regina dello studente! Ecco le opzioni per oggi:
-        <random>
-            <li>PASTA AL TONNO: Un classico. Se hai olive o capperi, buttali dentro.</li>
-            <li>AGLIO E OLIO: Soffriggi aglio e peperoncino. Semplice, economica e onesta.</li>
-            <li>PASTA COL PESTO: Se è quello in vasetto, allungalo con un cucchiaio di acqua di cottura per renderlo cremoso.</li>
-            <li>PASTA AL BURRO E SALVIA: Se ti senti raffinato e hai la salvia (o se stai male).</li>
-            <li>CARBONARA FINTA: Uova e quel formaggio che hai in frigo. Non dirlo ai romani, sarà il nostro segreto.</li>
-            <li>PASTA AL SUGO: Soffriggi cipolla, butta la passata, cuoci 10 min. Parmigiano a pioggia.</li>
-        </random>
-        <br/><br/>
-        ATTENZIONE: Ne hai fatta troppa? Dimmi: HO AVANZI PASTA.
-    </template>
-</category>
+    <category>
+        <pattern>MI CHIAMO *</pattern>
+        <template>
+            <think><set name="topic">*</set></think> Piacere, <set name="nome"><star/></set>.
+            Ascolta bene: il mio compito è farti mangiare decentemente.
+            Dimmi cosa hai nel frigo o in dispensa (Es: HO PASTA, HO UOVA, HO POLLO...).
+            Se sei disperato, scrivi: HO IL FRIGO VUOTO.
+        </template>
+    </category>
 
+    <category>
+        <pattern>IO SONO *</pattern>
+        <template><srai>MI CHIAMO <star/></srai></template>
+    </category>
 <category>
-    <pattern>HO AVANZI PASTA</pattern>
-    <template>
-        Non buttare nulla! Sacrilegio!
-        Mettila in padella con un filo d'olio finché non fa la crosticina croccante. 
-        È la colazione dei campioni (o il pranzo di domani).
-    </template>
-</category>
+        <pattern>HO PASTA</pattern>
+        <template>
+            <think><set name="topic">SCELTA_PASTA</set></think>
+            La regina dello studente! 🍝
+            Come ti senti oggi?
+            <br/>
+            1. PIGRO: Vuoi solo riempirti lo stomaco velocemente? (Scrivi: VELOCE)
+            2. SALUTISTA: Vuoi creare un piatto bilanciato e completo? (Scrivi: BILANCIATO)
+        </template>
+    </category>
+
+ <category>
+        <pattern>HO PASTA</pattern>
+        <template>
+            <think><set name="topic">PASTA</set></think>
+            La regina dello studente! 🍝
+            Come ti senti oggi?
+            <br/>
+            1. Scrivi VELOCE (se vuoi solo riempirti lo stomaco).
+            2. Scrivi BILANCIATO (se vuoi cucinare bene).
+        </template>
+    </category>
+
+    <topic name="PASTA">
+        
+        <category>
+            <pattern>VELOCE</pattern>
+            <template>
+                <think><set name="topic">*</set></think> Ok, minimo sforzo massima resa.
+                - AGLIO E OLIO: Soffriggi aglio e peperoncino.
+                - BURRO E SALVIA: Se ti senti raffinato.
+                - IN BIANCO: Olio e parmigiano (la tristezza, ma nutre).
+                - AL PESTO: Se hai il vasetto, allungalo con acqua di cottura.
+            </template>
+        </category>
+        
+        <category>
+            <pattern>BILANCIATO</pattern>
+            <template>
+                <think><set name="topic">CHEF</set></think> Ottimo! Per un piatto unico servono PROTEINE e VERDURE.
+                Dimmi l'ingrediente principale che hai (es: TONNO, UOVA, POLLO).
+            </template>
+        </category>
+
+        <category>
+            <pattern>*</pattern>
+            <template>Non ho capito. Scrivi esattamente VELOCE o BILANCIATO.</template>
+        </category>
+        
+    </topic>
+
+    <topic name="CHEF">
+        <category>
+            <pattern>* TONNO *</pattern>
+            <template>
+                <think><set name="topic">*</set></think>
+                Tonno = Proteine. Aggiungi Zucchine o Pomodori per le fibre!
+            </template>
+        </category>
+        
+        <category>
+            <pattern>TONNO</pattern> <template><srai>HO TONNO E BASTA</srai></template>
+        </category>
+
+        <category>
+            <pattern>*</pattern>
+            <template>
+                <think><set name="topic">*</set></think>
+                Va bene, ricorda la regola: Pasta + Proteina + Verdura.
+            </template>
+        </category>
+    </topic>
 
 <category>
     <pattern>HO RISO</pattern>
