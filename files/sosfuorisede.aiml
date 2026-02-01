@@ -42,17 +42,6 @@
         <pattern>IO SONO *</pattern>
         <template><srai>MI CHIAMO <star/></srai></template>
     </category>
-<category>
-        <pattern>HO PASTA</pattern>
-        <template>
-            <think><set name="topic">SCELTA_PASTA</set></think>
-            La regina dello studente! 🍝
-            Come ti senti oggi?
-            <br/>
-            1. PIGRO: Vuoi solo riempirti lo stomaco velocemente? (Scrivi: VELOCE)
-            2. SALUTISTA: Vuoi creare un piatto bilanciato e completo? (Scrivi: BILANCIATO)
-        </template>
-    </category>
 
  <category>
         <pattern>HO PASTA</pattern>
@@ -68,14 +57,18 @@
 
     <topic name="PASTA">
         
-        <category>
+<category>
             <pattern>VELOCE</pattern>
             <template>
-                <think><set name="topic">*</set></think> Ok, minimo sforzo massima resa.
-                - AGLIO E OLIO: Soffriggi aglio e peperoncino.
-                - BURRO E SALVIA: Se ti senti raffinato.
-                - IN BIANCO: Olio e parmigiano (la tristezza, ma nutre).
-                - AL PESTO: Se hai il vasetto, allungalo con acqua di cottura.
+                <think><set name="topic">*</set></think> Ok, minimo sforzo massima resa. Ecco le opzioni "Salva-Pranzo":
+                <br/><br/>
+                - AGLIO, OLIO E PEPERONCINO: Soffriggi tutto e salta in padella.<br/>
+                - BURRO E PARMIGIANO: La coccola definitiva quando sei giù.<br/>
+                - AL PESTO: Se hai il vasetto (allungalo con un po' d'acqua!).<br/>
+                - CACIO E PEPE: Se hai il pecorino grattugiato, aggiungi l'acqua di cottura per la cremina perfetta.<br/>
+                - CON VERDURE: Qualsiasi verdura tu abbia, saltala in padella.<br/>
+                <br/>
+                PRO TIP: Quando hai pochi ingredienti, il segreto è tenere sempre un po' di acqua di cottura (quella piena di amido) per fare la cremina!
             </template>
         </category>
         
