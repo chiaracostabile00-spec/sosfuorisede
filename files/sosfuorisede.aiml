@@ -167,6 +167,18 @@
         </template>
     </category>
 
+<category>
+        <pattern>HO RISO</pattern>
+        <template>
+            <think><set name="topic">SCELTA_RISO</set></think>
+            Il riso è versatile e ti salva il pranzo per due giorni. 🍚
+            Che mood hai oggi?
+            <br/>
+            1. Scrivi CALDO (se vuoi un risotto o qualcosa di coccoloso).
+            2. Scrivi FREDDO (se vuoi svuotare il frigo o preparare una schiscetta).
+        </template>
+    </category>
+
     <topic name="SCELTA_RISO">
         
         <category>
