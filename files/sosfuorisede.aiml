@@ -33,8 +33,8 @@
         <template>
             <think><set name="topic">*</set></think> Piacere, <set name="nome"><star/></set>.
             Ascolta bene: il mio compito è farti mangiare decentemente.
-            Dimmi cosa hai nel frigo o in dispensa (scrivi solo l'ingrediente, es: PASTA, RISO, UOVA, POLLO...).
-            Se sei disperato, scrivi: FRIGO VUOTO.
+            Dimmi cosa hai nel frigo o in dispensa (Es: HO PASTA, HO UOVA, HO POLLO...).
+            Se sei disperato, scrivi: HO IL FRIGO VUOTO.
         </template>
     </category>
 
@@ -44,24 +44,23 @@
     </category>
 
     <category>
-        <pattern>PASTA</pattern>
+        <pattern>HO PASTA</pattern>
         <template>
-            <think><set name="topic">RICETTE_PASTA</set></think>
+            <think><set name="topic">PASTA</set></think>
             La regina dello studente! 🍝
-            Qual è l'ingrediente principale che vuoi usare per il condimento?
-            (Es: TONNO, UOVA, POLLO, CECI...)
-            <br/><br/>
-            Oppure, se vuoi fare presto e hai il frigo piangente, scrivi: VELOCE.
+            Come ti senti oggi?
+            <br/>
+            1. Scrivi VELOCE (se vuoi solo riempirti lo stomaco).
+            2. Scrivi BILANCIATO (se vuoi cucinare bene).
         </template>
     </category>
 
-    <topic name="RICETTE_PASTA">
+    <topic name="PASTA">
         
         <category>
             <pattern>VELOCE</pattern>
             <template>
-                <think><set name="topic">*</set></think> 
-                Ok, minimo sforzo massima resa. Ecco le opzioni "Salva-Pranzo":
+                <think><set name="topic">*</set></think> Ok, minimo sforzo massima resa. Ecco le opzioni "Salva-Pranzo":
                 <br/><br/>
                 - AGLIO, OLIO E PEPERONCINO: Soffriggi tutto e salta in padella.<br/>
                 - BURRO E PARMIGIANO: La coccola definitiva quando sei giù.<br/>
@@ -72,6 +71,23 @@
                 PRO TIP: Quando hai pochi ingredienti, il segreto è tenere sempre un po' di acqua di cottura (quella piena di amido) per fare la cremina!
             </template>
         </category>
+        
+        <category>
+            <pattern>BILANCIATO</pattern>
+            <template>
+                <think><set name="topic">CHEF</set></think> Ottimo! Per un piatto unico servono PROTEINE e VERDURE.
+                Dimmi l'ingrediente principale che hai (es: TONNO, UOVA, POLLO).
+            </template>
+        </category>
+
+        <category>
+            <pattern>*</pattern>
+            <template>Non ho capito. Scrivi esattamente VELOCE o BILANCIATO.</template>
+        </category>
+        
+    </topic>
+
+    <topic name="CHEF">
         
         <category>
             <pattern>* TONNO *</pattern>
@@ -121,6 +137,8 @@
                 Non serve aggiungere altro. Metti un po' di rosmarino e olio a crudo.
             </template>
         </category>
+        <category><pattern>* FAGIOLI *</pattern><template><srai>HO CECI</srai></template></category>
+        <category><pattern>* LENTICCHIE *</pattern><template><srai>HO CECI</srai></template></category>
         <category><pattern>CECI</pattern><template><srai>HO CECI</srai></template></category>
         <category><pattern>FAGIOLI</pattern><template><srai>HO CECI</srai></template></category>
         <category><pattern>LENTICCHIE</pattern><template><srai>HO CECI</srai></template></category>
@@ -134,11 +152,11 @@
                 Sperimenta!
             </template>
         </category>
-        
+
     </topic>
 
     <category>
-        <pattern>RISO</pattern>
+        <pattern>HO RISO</pattern>
         <template>
             <think><set name="topic">SCELTA_RISO</set></think>
             Il riso è versatile e ti salva il pranzo per due giorni. 🍚
@@ -150,6 +168,7 @@
     </category>
 
     <topic name="SCELTA_RISO">
+        
         <category>
             <pattern>CALDO</pattern>
             <template>
@@ -180,15 +199,11 @@
             <pattern>*</pattern>
             <template>Non ho capito. Scrivi esattamente CALDO o FREDDO.</template>
         </category>
+
     </topic>
 
     <category>
-        <pattern>COME CONSERVO IL RISO</pattern>
-        <template>In frigo dentro un contenitore ermetico per massimo 2 giorni!</template>
-    </category>
-
-    <category>
-        <pattern>PANE</pattern>
+        <pattern>HO PANE</pattern>
         <template>
             Fresco o vecchio come il cucco?
             <random>
@@ -197,12 +212,12 @@
                 <li>SCARPETTA: Usalo per pulire il piatto se hai fatto il sugo.</li>
             </random>
             <br/>
-            Se il pane è duro come un sasso, scrivi: PANE SECCO.
+            Se il pane è duro come un sasso, dimmi: HO PANE SECCO.
         </template>
     </category>
 
     <category>
-        <pattern>PANE SECCO</pattern>
+        <pattern>HO PANE SECCO</pattern>
         <template>
             Non usarlo come arma contundente! Puoi farci:
             1. PANGRATTATO: Gratugialo.
@@ -212,7 +227,7 @@
     </category>
 
     <category>
-        <pattern>PATATE</pattern>
+        <pattern>HO PATATE</pattern>
         <template>
             Le patate salvano la vita ed costano pochissimo. Ma ci vuole tempo.
             <random>
@@ -226,7 +241,7 @@
     </category>
 
     <category>
-        <pattern>UOVA</pattern>
+        <pattern>HO UOVA</pattern>
         <template>
             Le uova salvano la cena in 5 minuti.
             <random>
@@ -252,7 +267,7 @@
     </category>
 
     <category>
-        <pattern>POLLO</pattern>
+        <pattern>HO POLLO</pattern>
         <template>
             Il pollo crudo è pericoloso (salmonella!), lavati bene le mani dopo averlo toccato!
             Ecco come renderlo gustoso:
@@ -268,7 +283,7 @@
     </category>
 
     <category>
-        <pattern>TONNO</pattern>
+        <pattern>HO TONNO</pattern>
         <template>
             Il santo patrono degli studenti fuori sede.
             - Nella pasta: Ovvio.
@@ -278,7 +293,7 @@
     </category>
 
     <category>
-        <pattern>LEGUMI</pattern>
+        <pattern>HO LEGUMI</pattern>
         <template>
             Fagioli, Ceci o Lenticchie? Sono proteine super economiche.
             <random>
@@ -291,7 +306,7 @@
     </category>
 
     <category>
-        <pattern>FORMAGGIO</pattern>
+        <pattern>HO FORMAGGIO</pattern>
         <template>
             Dipende da cosa hai comprato.
             - Se è MOZZARELLA: Caprese (con pomodoro) o sulla pizza/pane.
@@ -302,7 +317,7 @@
     </category>
 
     <category>
-        <pattern>VERDURE</pattern>
+        <pattern>HO VERDURE</pattern>
         <template>
             Finalmente! Bravo <get name="nome"/>, le vitamine servono per studiare.
             Cosa hai comprato al mercato? (Pomodori, Zucchine, Insalata, Carote...)
@@ -310,7 +325,7 @@
     </category>
 
     <category>
-        <pattern>POMODORI</pattern>
+        <pattern>HO POMODORI</pattern>
         <template>
             Rossi e succosi.
             <random>
@@ -323,7 +338,7 @@
     </category>
 
     <category>
-        <pattern>ZUCCHINE</pattern>
+        <pattern>HO ZUCCHINE</pattern>
         <template>
             Le zucchine stanno bene con tutto, ma sono insipide se non le tratti male.
             1. TRIFOLATE: Taglia a rondelle, padella, olio, aglio e prezzemolo. Cuoci forte.
@@ -333,7 +348,7 @@
     </category>
 
     <category>
-        <pattern>INSALATA</pattern>
+        <pattern>HO INSALATA</pattern>
         <template>
             L'insalata da sola è triste. Arricchiscila!
             Aggiungi: Tonno, Mais, Noci, Mele a cubetti, Scaglie di grana.
@@ -342,7 +357,7 @@
     </category>
 
     <category>
-        <pattern>CAROTE</pattern>
+        <pattern>HO CAROTE</pattern>
         <template>
             Croccanti!
             - SNACK: Pelale e mangiale crude mentre studi. Antistress naturale.
@@ -372,14 +387,12 @@
     </category>
 
     <category>
-        <pattern>FRIGO VUOTO</pattern>
+        <pattern>HO IL FRIGO VUOTO</pattern>
         <template>
             Situazione critica, soldato. Controlliamo la DISPENSA (quella delle scatolette).
-            Hai TONNO, FAGIOLI o PELATI?
+            Hai tonno, fagioli o pelati?
         </template>
     </category>
-    
-    <category><pattern>HO IL FRIGO VUOTO</pattern><template><srai>FRIGO VUOTO</srai></template></category>
 
     <category>
         <pattern>SI</pattern>
@@ -410,36 +423,50 @@
         </template>
     </category>
 
-    <category><pattern>HO PASTA</pattern><template><srai>PASTA</srai></template></category>
-    <category><pattern>HO RISO</pattern><template><srai>RISO</srai></template></category>
-    <category><pattern>HO POLLO</pattern><template><srai>POLLO</srai></template></category>
-    <category><pattern>HO UOVA</pattern><template><srai>UOVA</srai></template></category>
-    <category><pattern>HO TONNO</pattern><template><srai>TONNO</srai></template></category>
-    
-    <category><pattern>SPAGHETTI</pattern><template><srai>PASTA</srai></template></category>
-    <category><pattern>PENNE</pattern><template><srai>PASTA</srai></template></category>
-    <category><pattern>FUSILLI</pattern><template><srai>PASTA</srai></template></category>
-    <category><pattern>HO SPAGHETTI</pattern><template><srai>PASTA</srai></template></category>
-    <category><pattern>RICETTA PASTA</pattern><template><srai>PASTA</srai></template></category>
+    <category><pattern>HO SPAGHETTI</pattern><template><srai>HO PASTA</srai></template></category>
+    <category><pattern>HO PENNE</pattern><template><srai>HO PASTA</srai></template></category>
+    <category><pattern>HO FUSILLI</pattern><template><srai>HO PASTA</srai></template></category>
+    <category><pattern>HO RIGATONI</pattern><template><srai>HO PASTA</srai></template></category>
+    <category><pattern>HO TORTELLINI</pattern><template><srai>HO PASTA</srai></template></category>
+    <category><pattern>HO RAVIOLI</pattern><template><srai>HO PASTA</srai></template></category>
+    <category><pattern>HO GNOCCHI</pattern><template><srai>HO PASTA</srai></template></category>
+    <category><pattern>HO LASAGNE</pattern><template><srai>HO PASTA</srai></template></category>
+    <category><pattern>HO ORECCHIETTE</pattern><template><srai>HO PASTA</srai></template></category>
+    <category><pattern>HO TAGLIATELLE</pattern><template><srai>HO PASTA</srai></template></category>
+    <category><pattern>HO LA PASTA</pattern><template><srai>HO PASTA</srai></template></category>
+    <category><pattern>RICETTA PASTA</pattern><template><srai>HO PASTA</srai></template></category>
 
-    <category><pattern>RISO BASMATI</pattern><template><srai>RISO</srai></template></category>
-    <category><pattern>HO RISO BASMATI</pattern><template><srai>RISO</srai></template></category>
+    <category><pattern>HO RISO BASMATI</pattern><template><srai>HO RISO</srai></template></category>
+    <category><pattern>HO RISO INTEGRALE</pattern><template><srai>HO RISO</srai></template></category>
+    <category><pattern>HO COUSCOUS</pattern><template><srai>HO RISO</srai></template></category>
+    <category><pattern>HO FARRO</pattern><template><srai>HO RISO</srai></template></category>
+    <category><pattern>HO ORZO</pattern><template><srai>HO RISO</srai></template></category>
+    <category><pattern>HO QUINOA</pattern><template><srai>HO RISO</srai></template></category>
 
-    <category><pattern>CECI</pattern><template><srai>LEGUMI</srai></template></category>
-    <category><pattern>FAGIOLI</pattern><template><srai>LEGUMI</srai></template></category>
-    <category><pattern>LENTICCHIE</pattern><template><srai>LEGUMI</srai></template></category>
-    <category><pattern>HO CECI</pattern><template><srai>LEGUMI</srai></template></category>
+    <category><pattern>HO FOCACCIA</pattern><template><srai>HO PANE</srai></template></category>
+    <category><pattern>HO PIADINA</pattern><template><srai>HO PANE</srai></template></category>
+    <category><pattern>HO CRACKERS</pattern><template><srai>HO PANE</srai></template></category>
+    <category><pattern>HO FETTE BISCOTTATE</pattern><template><srai>HO PANE</srai></template></category>
+    <category><pattern>HO PAN CARRE</pattern><template><srai>HO PANE</srai></template></category>
+    <category><pattern>HO PANE PER TOAST</pattern><template><srai>HO PANE</srai></template></category>
+    <category><pattern>HO ROSETTA</pattern><template><srai>HO PANE</srai></template></category>
 
-    <category><pattern>MOZZARELLA</pattern><template><srai>FORMAGGIO</srai></template></category>
-    <category><pattern>GRANA</pattern><template><srai>FORMAGGIO</srai></template></category>
-    <category><pattern>PARMIGIANO</pattern><template><srai>FORMAGGIO</srai></template></category>
+    <category><pattern>HO CECI</pattern><template><srai>HO LEGUMI</srai></template></category>
+    <category><pattern>HO FAGIOLI</pattern><template><srai>HO LEGUMI</srai></template></category>
+    <category><pattern>HO LENTICCHIE</pattern><template><srai>HO LEGUMI</srai></template></category>
+    <category><pattern>HO MOZZARELLA</pattern><template><srai>HO FORMAGGIO</srai></template></category>
+    <category><pattern>HO GRANA</pattern><template><srai>HO FORMAGGIO</srai></template></category>
+    <category><pattern>HO PARMIGIANO</pattern><template><srai>HO FORMAGGIO</srai></template></category>
+
+    <category><pattern>HO PATATINE</pattern><template><srai>HO PATATE</srai></template></category>
+    <category><pattern>HO PURE</pattern><template><srai>HO PATATE</srai></template></category>
 
     <category>
         <pattern>*</pattern>
         <template>
             Mmm, non conosco questo ingrediente (o forse non ti ho capito).
-            Prova a scrivermi solo il nome base dell'ingrediente, tipo: PASTA, RISO, UOVA, POLLO.
-            Oppure scrivi: FRIGO VUOTO.
+            Prova a dirmi qualcosa di base come: HO PASTA, HO UOVA, HO POLLO.
+            Oppure dimmi: HO IL FRIGO VUOTO.
         </template>
     </category>
 
